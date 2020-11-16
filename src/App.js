@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import react, {useState, useEffect} from "react";
+import Head from  "./component/Head";
+import {Bottom} from  "./component/Head";
 
 function App() {
+  const [x, setX] = useState('');
+  const [y, setY] = useState('');
+  const [flag, setFlag] = useState(false);
+
+  useEffect(() => {
+    console.log("parent")
+    setX("changed first render")
+    setFlag(true);
+    setY("changed first render")
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      x: {x}
+      <Head setY={setY} flag={flag}/>
+      <div>y:{y}</div>
+
+      <Bottom />
     </div>
   );
 }

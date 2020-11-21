@@ -1,21 +1,10 @@
 import react, {useState, useEffect} from "react";
 
-export const Bottom = () => {
-    return (
-        <div>
-            ana lBotooooom
-        </div>
-    )
-}
-
-const Head = (props) => {
-    const {setY, flag} = props;
+const Head = ({setY, flag}) => {
     const [z, setZ] = useState()
 
     useEffect(()=> {
-            console.log("childddddddddd")
         if(flag) {
-            console.log("inside if in child")
             setY("changed by child Head on his first render")
         }
     }, [flag])
@@ -29,9 +18,9 @@ const Head = (props) => {
 
     return (
         <div>
-            ana lheadddddddddddddd z: {z}
-        <button onClick={clickHandler}>child click</button>
-        <input type='text' onChange={event => onChangehandler(event)}/>
+            ana lhead z: {z}
+            <button onClick={clickHandler}>Head child click</button>
+            <input placeholder="y of head" type='text' onChange={event => onChangehandler(event)}/>
         </div>
     )
 }

@@ -2,21 +2,30 @@ import react, {useState, useEffect} from "react";
 import axios from "axios";
 
 export default () => {
-    const [m, setM] = useState('')
+    const [updatedata, setupdatedata] = useState({contactPhoneNumber: '' ,message:'',sponsorBoothId:''})
+        
+    
+     
 
-    // useEffect(()=> {
-    //     console.log("m", m);
-    // }, [m])
+    //useEffect(()=> {
+      //  console.log("updatedata", updatedata);
+    //}, [updatedata])
 
     function onChangehandler(event) {
-        setM(event.target.value);
+        setupdatedata({...updatedata, contactPhoneNumber: event.target.value});
+    }
+    function onChangehandler2(event) {
+        setupdatedata({...updatedata, message: event.target.value});
+    }
+    function onChangehandler3(event) {
+        setupdatedata({...updatedata, sponsorBoothId: event.target.value});
     }
 
     async function clickHandler() {
         const data = {
-            'sponsorBoothId': m,
-            'contactPhoneNumber': '123',
-            'message': 'ggg' 
+            'sponsorBoothId': updatedata.sponsorBoothId,
+            'contactPhoneNumber': updatedata.contactPhoneNumber,
+            'message':updatedata.message,
            };
         const config = {
             method: 'post',
@@ -33,9 +42,11 @@ export default () => {
     
     return (
         <div style={{marginTop: '50px'}}>
-            ana lBottom
-            <input value="ttttttttttt" placeholder="m of Bottom" type='text' onChange={event => onChangehandler(event)}/>
-            <button onClick={clickHandler}>Bottom child post api</button>
+            bla bla
+            <input placeholder="123 for contactphonenumber" type='text' onChange={event => onChangehandler(event)}/>
+            <input placeholder="any for message" type='text' onChange={event => onChangehandler2(event)}/>
+            <input  placeholder="any for message" type='text' onChange={event => onChangehandler3(event)}/>
+            <button onClick={clickHandler}>Form child</button>
         </div>
     )
 }
